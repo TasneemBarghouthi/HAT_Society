@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 11, 2017, 6:24:14 PM
+    Author     : Tasneem
+*/
+
+body, html {
+    height: 100%
+}
+body {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+div#signup_form {
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 30%;
+    height: 80%;
+    left: 100%;
+    transform: translate(50%, 0%);
+}
+input[type=submit]:hover {
+    background-color: #9370DB;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #9932CC;
+    color: white;
+    padding: 14px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password]  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=inputTextarea], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

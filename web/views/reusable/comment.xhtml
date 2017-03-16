@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <div class="comment_container">        
+        <div class="comment_details">
+            <p:graphicImage class="comment_owner_photo" value="../resources/images/me.jpg" alt="HAT"/>
+        </div>
+        <div class="comment_content">
+            <div class="comment_meta">
+                <span class="comment_owner_name pull_left">
+                    <!--we read the value of the next output label from database-->
+                    <p:outputLabel value="HAT"/>
+                </span>
+                <span class="comment_timestamp pull_right">
+                    <!--we read the value of the next output label from database-->
+                    <p:outputLabel value="06 Mar 12:02 am"/>
+                </span>
+            </div>
+            <!--we read the comment content from database, we check-->
+            <!--for each of these following elements we add a "rendered" attribute that check if the source of the element is not empty-->
+            <p:outputLabel class="comment_text" value="comment content will be placed here" rendered="true"/>
+            <p:graphicImage class="comment_photo" value="../resources/images/me.jpg" alt="COMMENT" rendered="false"/>
+            <!--still need to show the added video and attached file--> 
+            <div class="comment_action_buttons">
+                <h:form>  
+                    <p:commandButton style="border: none; background: transparent;" icon="fa fa-heart-o"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

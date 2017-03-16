@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>HAT Society - Welcome To BZU Social Media Site</title>
+        <meta charset="utf-8"/>
+        <meta name="keywords" content="Social Network, Social Media, Social, Media, Network, Educational, BZU, Birzeit, University, Birzeit University, Portal"/>
+        <meta name="author" content="Hadeel Musleh, Amneh Mohammad, and Tasneem Daghrah"/>
+        <meta name="description" content="Social Network Site for Birzeit University, Created as a Graduation Project"/>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <link rel="icon shortcut" href="../../resources/logos/HAT_LOGO.png" type="image/png"/>
+        <link href='../../resources/style/login-style.css' rel='stylesheet' type='text/css'/>
+        <!-- Bootstrap 3.3.5 -->
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="font-awesome.min.css"/>
+        <h:outputStylesheet library="css" name="ionicons.min.css"/>
+        <h:outputStylesheet library="dist" name="css/AdminLTE.min.css"/>
+        <h:outputStylesheet library="plugins" name="iCheck/square/blue.css"/>
+    </h:head>
+    <h:body class="hold-transition login-page">
+        <div id="background">
+            <!--            <div id="login_form">
+                            <h:form id="login_information_form">
+                                <p:inputText id="username" value="#{registrationController.loggedInUser.email}" placeholder="Enter your email..." required="true" requiredMessage="Email is required"/>
+            
+                                <p:password id="password" value="#{registrationController.loggedInUser.password}" placeholder="Enter your password..." required="true" requiredMessage="Password is required"/>
+                                <p:commandButton id="login" value="Login" ajax="false" action="#{registrationController.login()}"/>
+                            </h:form>
+                        </div>-->
+            <h:form>
+                <p:growl id="growlLogin" life="3000"/>
+                <div class="login-box">
+                    <div class="login-logo">
+                        <b>HAT Society</b> BZU
+                    </div><!-- /.login-logo -->
+                    <div class="login-box-body">
+                        <!--#AD85BF-->
+                        <div class="form-group has-feedback">
+                            <p:inputText id="txtUserName" class="form-control" label="Username" value="#{registrationController.loggedInUser.email}" required="true">
+                                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                            </p:inputText>
+                            <p:watermark value="#{messages.usernameText}" for="txtUserName"/>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <p:password id="txtPassword" class="form-control" label="Password" value="#{registrationController.loggedInUser.password}" required="true">
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </p:password>
+                            <p:watermark for="txtPassword" value="#{messages.passwordText}"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p:commandButton value="#{messages.loginText}" action="#{registrationController.login()}" update="growlLogin" class="btn btn-primary btn-lg btn-block btn-flat" icon="fa fa-user"/>
+                            </div><!-- /.col -->
+                        </div>
+
+                    </div><!-- /.login-box-body -->
+                </div><!-- /.login-box -->
+            </h:form>
+        </div>
+
+        <h:outputScript library="bootstrap" name="js/bootstrap.min.js"/>
+        <h:outputScript library="plugins" name="iCheck/icheck.min.js"/>
+        <h:outputScript name="jquery/jquery.js" library="primefaces" />
+        <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' // optional
+                });
+            });
+        </script>
+    </h:body>
+</html>

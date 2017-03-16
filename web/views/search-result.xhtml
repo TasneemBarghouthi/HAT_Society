@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h3> Search</h3>
+    <h:form>
+
+        <h3> Results </h3>
+        <h:dataTable value="#{searchController.users}" var="Friends">
+
+            <h:column>
+                <f:facet name="header"> </f:facet>
+                <img src="#{Friends.picture_url}" height="80" width="65" />
+
+                <f:facet name="header"></f:facet>
+                <p:commandLink value="#{Friends.username}" action="profile.xhtml" actionListener="#{profileInfo.login(Friends.user_id)}"></p:commandLink>
+            </h:column>
+
+        </h:dataTable>
+    </h:form>  
+</ui:composition>

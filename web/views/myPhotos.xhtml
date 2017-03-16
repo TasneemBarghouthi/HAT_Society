@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h1> Photos </h1>
+    <h:dataTable value="#{profileInfo.photos}" var="Photos">
+
+        <h:column>
+            <f:facet name="header"> </f:facet>
+            <img src="#{Photos.photo_url}" height="80" width="65" />
+
+        </h:column>
+
+    </h:dataTable>
+</ui:composition>
+

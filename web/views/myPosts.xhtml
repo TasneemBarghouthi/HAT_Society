@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h1> Posts </h1>
+    From to 
+    <h:dataTable value="#{profileInfo.posts}" var="Posts">
+
+        <h:column>
+            <f:facet name="header"> </f:facet>
+                #{Posts.content}
+
+        </h:column>
+
+    </h:dataTable>
+    me me
+    <h:dataTable value="#{profileInfo.myPosts}" var="Posts">
+        <h:column>
+            <f:facet name="header"> </f:facet>
+                #{Posts.content}
+        </h:column>
+    </h:dataTable>
+    <ui:include src="reusable/post.xhtml"/>
+
+</ui:composition>
+
+

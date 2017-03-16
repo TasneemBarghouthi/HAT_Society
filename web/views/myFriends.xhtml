@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form >
+        <h1> Friends </h1>
+        <h:dataTable value="#{profileInfo.friends}" var="Friends">
+
+            <h:column>
+                <f:facet name="header"> </f:facet>
+                <img src="#{Friends.picture_url}" height="80" width="65" />
+
+                <f:facet name="header"></f:facet>
+                <h:commandButton  value="#{Friends.username}" action="profile.xhtml" actionListener="#{profileInfo.login(Friends.user_id)}"></h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</ui:composition> 

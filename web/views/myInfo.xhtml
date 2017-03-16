@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:form >
+        <h1> Info </h1>
+        <ul> 
+            <li class="tabel" >Email #{profileInfo.loggedInUser.email}</li>
+            <li class="tabel" >Phone Number #{profileInfo.loggedInUser.phonenumber}</li>
+            <li class="tabel" >Birthday #{profileInfo.loggedInUser.birthdate}</li>
+            <li class="tabel"  >Gender #{profileInfo.loggedInUser.gender}</li>
+            <li class="tabel" >Region #{profileInfo.loggedInUser.region}</li>
+        </ul>
+    </h:form>
+
+</ui:composition>
