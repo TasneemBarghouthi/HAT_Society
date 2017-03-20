@@ -29,16 +29,6 @@ public class User implements Serializable {
     private String gender;
     private String phonenumber;
 
-    public User() {
-
-    }
-
-    public User(String s1, String s2, int i) {
-        this.username = s2;
-        this.picture_url = s1;
-        this.user_id = i;
-    }
-
     // Setters and Getters Methods:    
     public int getUser_id() {
         return user_id;

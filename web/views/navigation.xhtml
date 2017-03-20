@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ul>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                <span>
+                    #{messages.homeMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-group" aria-hidden="true"></i>
+                <span>
+                    #{messages.classesMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <span>
+                    #{messages.questionnaireMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-group" aria-hidden="true"></i>
+                <span>
+                    #{messages.groupsMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <span>
+                    #{messages.eventsMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+        <li class="treeview" id="mainTree">
+            <p:commandLink action="#{menuController.navigateViews(view)}">
+                <i class="fa fa-columns" aria-hidden="true"></i>
+                <span>
+                    #{messages.pagesMenuLabel}
+                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </p:commandLink>
+        </li>
+    </ul>
+</ui:composition>

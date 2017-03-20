@@ -38,7 +38,7 @@
                                 <p:commandButton id="login" value="Login" ajax="false" action="#{registrationController.login()}"/>
                             </h:form>
                         </div>-->
-            <h:form>
+            <h:form id="login_form">
                 <p:growl id="growlLogin" life="3000"/>
                 <div class="login-box">
                     <div class="login-logo">
@@ -58,15 +58,15 @@
                             </p:password>
                             <p:watermark for="txtPassword" value="#{messages.passwordText}"/>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p:commandButton value="#{messages.loginText}" action="#{registrationController.login()}" update="growlLogin" class="btn btn-primary btn-lg btn-block btn-flat" icon="fa fa-user"/>
-                            </div><!-- /.col -->
-                        </div>
+                        <p:commandButton value="#{messages.loginText}" ajax="false" action="#{registrationController.login()}" update="growlLogin" class="btn btn-primary btn-lg btn-block btn-flat" icon="fa fa-user"/>
 
                     </div><!-- /.login-box-body -->
                 </div><!-- /.login-box -->
             </h:form>
+        </div>
+        <br/>
+        <div>
+            <h:graphicImage library="logos" name="HAT_LOGO.png" style="width: 50%; height: 50%;"/>
         </div>
 
         <h:outputScript library="bootstrap" name="js/bootstrap.min.js"/>

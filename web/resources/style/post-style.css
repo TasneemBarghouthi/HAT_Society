@@ -13,13 +13,19 @@ body, html {
 body {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
+.ui-widget{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+.new_post_content .ui-outputlabel{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
 .post_content .ui-outputlabel{
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 .comment_content .ui-outputlabel{
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
-.post_owner_photo {
+.post_owner_photo, .new_post_owner_photo {
     border-radius: 50%;
     float: left;
     width: 40px;
@@ -31,15 +37,39 @@ body {
     width: 30px;
     height: 30px;
 }
+.new_post_text {
+    width: 100%;
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    padding: 5px;
+    background: white;
+    border: 0px solid #00a65a;
+    color: #444;
+    box-shadow: 0px 0px 10px 5px #E6E6E6;
+    -webkit-box-shadow: 0px 0px 3px 1px #E6E6E6;
+}
+.new_post_content {
+    border-radius: 5px;
+    position: relative;
+    padding: 2px 4px;
+    background: whitesmoke;
+    border: 1px solid #00a65a;
+    margin: 0 0 50px 50px;
+    color: #444;
+    box-shadow: 0px 0px 10px 5px #E6E6E6;
+    -webkit-box-shadow: 0px 0px 3px 1px #E6E6E6;
+}
 .post_content {
     border-radius: 5px;
     position: relative;
     padding: 5px 10px;
     background: whitesmoke;
-    border: 1px solid #00a65a;;
+    border: 1px solid #00a65a;
     margin: 0 0 0 50px;
     color: #444;
-    box-shadow: 0px 0px 10px 5px gray;
+    box-shadow: 0px 0px 10px 5px #E6E6E6;
     -webkit-box-shadow: 0px 0px 3px 1px #E6E6E6;
 
 }
@@ -52,7 +82,19 @@ body {
     margin: 0 0 0 40px;
     color: #444;
 }
-.post_details,.comment_details {
+.post_content .ui-widget{
+    font-weight: normal;
+}
+.comment_content .ui-widget{
+    font-weight: normal;
+}
+.post_meta .post_owner_name .ui-widget {
+    font-weight: bold;
+}
+.comment_meta .comment_owner_name .ui-widget{
+    font-weight: bold;
+}
+.post_details,.comment_details, .new_post_details {
     margin-bottom: 0px;
 }
 .post_timestamp, .comment_timestamp {
@@ -60,6 +102,11 @@ body {
 }
 .pull_right {
     float: right!important;
+}
+.new_post_meta {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 15px;
 }
 .post_meta {
     display: block;
@@ -81,7 +128,7 @@ body {
     padding: 0 0 0 0;
     /*float: left!important;*/
 }
-.post_content:after, .post_content:before {
+.post_content:after, .post_content:before, .new_post_content:after, .new_post_content:before {
     position: absolute;
     right: 100%;
     top: 5px;
@@ -112,15 +159,18 @@ body {
     width: 100%;
     height: 300px;
 }
+.new_post_choices_buttons {
+    margin: 5px 0 5px 0;
+}
 .post_action_buttons {
     margin: 5px 0 5px 0;
 }
-.post_action_buttons .ui-button{
-    font-size: 15px;
+.post_action_buttons .ui-button, .new_post_choices_buttons .ui-button{
+    background: transparent !important;
 }
 .comment_action_buttons{
     margin: 0;
 }
 .comment_action_buttons .ui-button{
-    font-size: 15px;
+    font-size: 10px;
 }

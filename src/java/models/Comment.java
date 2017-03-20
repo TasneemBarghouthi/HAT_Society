@@ -7,69 +7,27 @@ package models;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Tasneem
  */
-@Entity
-@Table(name = "comment")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c")
-    , @NamedQuery(name = "Comment.findByCommentId", query = "SELECT c FROM Comment c WHERE c.commentId = :commentId")
-    , @NamedQuery(name = "Comment.findByDate", query = "SELECT c FROM Comment c WHERE c.date = :date")})
 public class Comment implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "comment_id")
-    private Integer commentId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
-    @JoinColumn(name = "post_id", referencedColumnName = "post_id")
-    @ManyToOne(optional = false)
-    private Post postId;
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
-    private UserProfile userId;
+    private int comment_id;
+    private java.util.Date date;
+    private int post_id;
+    private Post post;
+    private int user_id;
+    private User user;
 
-    public Comment() {
+    //Setters and Getters Methods:
+    public int getComment_id() {
+        return comment_id;
     }
 
-    public Comment(Integer commentId) {
-        this.commentId = commentId;
-    }
-
-    public Comment(Integer commentId, Date date) {
-        this.commentId = commentId;
-        this.date = date;
-    }
-
-    public Integer getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(Integer commentId) {
-        this.commentId = commentId;
+    public void setComment_id(int comment_id) {
+        this.comment_id = comment_id;
     }
 
     public Date getDate() {
@@ -80,45 +38,36 @@ public class Comment implements Serializable {
         this.date = date;
     }
 
-    public Post getPostId() {
-        return postId;
+    public int getPost_id() {
+        return post_id;
     }
 
-    public void setPostId(Post postId) {
-        this.postId = postId;
+    public void setPost_id(int post_id) {
+        this.post_id = post_id;
     }
 
-    public UserProfile getUserId() {
-        return userId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setUserId(UserProfile userId) {
-        this.userId = userId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (commentId != null ? commentId.hashCode() : 0);
-        return hash;
+    public int getUser_id() {
+        return user_id;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Comment)) {
-            return false;
-        }
-        Comment other = (Comment) object;
-        if ((this.commentId == null && other.commentId != null) || (this.commentId != null && !this.commentId.equals(other.commentId))) {
-            return false;
-        }
-        return true;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    @Override
-    public String toString() {
-        return "models.Comment[ commentId=" + commentId + " ]";
+    public User getUser() {
+        return user;
     }
-    
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

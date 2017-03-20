@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:form>       
+        <h1 style="text-align: center;"><b>Hello Guest!</b></h1>
+        <h4 style="text-align: center;">Already having an account? Go and <p:commandLink style="font-size: 18px !important;" value="#{messages.loginText}" action="registration/login?faces-redirect=true" ajax="false"></p:commandLink></h4>
+        <h4 style="text-align: center;">Or <p:commandLink style="font-size: 18px !important;" value="#{messages.signupText}" action="registration/sign-up?faces-redirect=true" ajax="false"></p:commandLink></h4>
+        <br/>
+        <br/>
+        <h:graphicImage library="logos" name="HAT_LOGO.png" style="margin:auto 25%; width: 50%; height: 50%;"/>
+    </h:form>
+</ui:composition>

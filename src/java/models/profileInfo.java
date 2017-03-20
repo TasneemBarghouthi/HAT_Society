@@ -166,7 +166,11 @@ public class profileInfo {
                 String sqlQuery2 = "SELECT `username`, `picture` FROM `user_profile` WHERE `user_id`=" + Integer.parseInt(ids.get(i));
                 ResultSet rs2 = st2.executeQuery(sqlQuery2);
                 if (rs2.next()) {
-                    friends.add(new User(rs2.getString("picture"), rs2.getString("username"), Integer.parseInt(ids.get(i))));
+                    User user = new User();
+                    user.setPicture_url(rs2.getString("picture"));
+                    user.setUsername(rs2.getString("username"));
+                    user.setUser_id(Integer.parseInt(ids.get(i)));
+                    friends.add(user);
                 }
             }
 

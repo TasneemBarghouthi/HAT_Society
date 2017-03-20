@@ -11,21 +11,21 @@ import java.io.Serializable;
  *
  * @author Tasneem
  */
-public class Board implements Serializable {
+public class CClass implements Serializable {
 
-    private int board_id;
+    private int class_id;
     private int course_id;
     private Course course;
-    private int msg_id;
-    private Message msg;
+    private int group_id;
+    private Group group;
 
     //Setters and Getters Methods:
-    public int getBoard_id() {
-        return board_id;
+    public int getClass_id() {
+        return class_id;
     }
 
-    public void setBoard_id(int board_id) {
-        this.board_id = board_id;
+    public void setClass_id(int class_id) {
+        this.class_id = class_id;
     }
 
     public int getCourse_id() {
@@ -44,20 +44,20 @@ public class Board implements Serializable {
         this.course = course;
     }
 
-    public int getMsg_id() {
-        return msg_id;
+    public int getGroup_id() {
+        return group_id;
     }
 
-    public void setMsg_id(int msg_id) {
-        this.msg_id = msg_id;
+    public void setGroup_id(int group_id) {
+        this.group_id = group_id;
     }
 
-    public Message getMsg() {
-        return msg;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setMsg(Message msg) {
-        this.msg = msg;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
 }

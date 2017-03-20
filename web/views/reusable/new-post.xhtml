@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <div class="new_post_container">            
+        <div class="new_post_details">
+            <p:graphicImage class="new_post_owner_photo" value="../resources/images/me.jpg" alt="#{registrationController.loggedInUser.first_name} #{registrationController.loggedInUser.last_name}"/>
+        </div>
+        <div class="new_post_content">
+            <h:form>
+                <div class="new_post_meta"></div>
+                <p:inputTextarea id="newPost" class="new_post_text"/>
+                <p:watermark for="newPost" value="#{messages.newPostContent}"/>
+                <div class="new_post_choices_buttons">
+                    <p:panelGrid columns="4">
+                        <p:commandButton icon="fa fa-font"/>
+                        <p:commandButton icon="fa fa-camera"/>
+                        <p:commandButton icon="fa fa-video-camera"/>
+                        <p:commandButton icon="fa fa-file"/>
+                    </p:panelGrid>
+                </div>
+                <div>
+                    <p:commandButton style="right: 0px" icon=""/>
+                </div>
+            </h:form>
+            <!--            <f:facet name="footer">
+                            <h:form id="shareNewPostButtonAction">
+            
+                            </h:form>
+                        </f:facet>-->
+        </div>
+    </div>
+</ui:composition>

@@ -90,9 +90,10 @@
         <h:outputStylesheet library="css" name="pfcrud.css"/>
         <script>
             #{menuController.init()}
+            #{postBean.init()}
         </script>
     </h:head>
-    <h:body class="hold-transition skin-blue sidebar-mini">
+    <h:body class="hold-transition skin-main sidebar-mini" rendered="#{registrationController.loggedIn}">
 
         <p:growl id="growl" life="3000"/>
 
@@ -262,33 +263,76 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="#{request.contextPath}/index.xhtml" class="logo">
+                <a href="#{request.contextPath}/home.xhtml" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b><h:outputText value="#{messages.SiteNameMini}"/></b></span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg"><b><h:outputText value="#{messages.SiteName}"/></b></span>
                 </a>
+
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
+
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <span class="no" style="width: 20%">
-                        <h:form>
-                            <p:inputText id="txtSearch" style="width: 20%" class="form-control" value="#{searchController.keyword}">
-                                <p:ajax event="keyup" />
-                            </p:inputText>
-                            <p:watermark for="txtSearch" value="Search..."></p:watermark>
-                            <span class="input-group-btn">
-                                <p:commandButton id="search-btn" ajax="false" class="btn btn-flat" icon="fa fa-search" actionListener="#{searchController.getUsers()}">
-                                    <p:ajax event="click" listener="#{menuController.changeIndex()}"/>
-                                </p:commandButton>
-                            </span>
-                        </h:form>
-                    </span>                    
+                    </a> 
+                    <div class="navbar-custom-menu" style="float: left;margin-left: 10%">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown notifications-menu" >
+                                <h:form>
+                                    <p:remoteCommand name="search" update=":searchForm" actionListener="#{menuController.searchInputText()}"/>
+
+                                </h:form>
+                                <a onclick="search()" href="#"  class="dropdown-toggle" data-toggle="dropdown" >
+                                    <i class="fa fa-search"></i>
+                                </a>
+                                <!--                                <ul class="dropdown-menu">
+                                                                    <li class="header"></li>
+                                                                    <h:form>
+                                                                        <h:panelGrid columns="2" style="width: 100%">
+                                                                            <p:inputText id="txtSearch" style="width: 100%;border-radius: 0px!important" styleClass="selectMenu" value="#{searchController.keyword}">
+                                                                                <p:ajax event="keyup" />
+                                                                            </p:inputText>
+                                                                            <p:watermark for="txtSearch" value="Search..." />
+                                                         
+                                                                        </h:panelGrid>
+                                                                    </h:form>
+                                                                    <li class="footer" style="border: 2px solid gray"><a href="#">View Result</a></li>
+                                                                </ul>-->
+                            </li>
+                            <li>
+
+                                <h:form id="searchForm" rendered="#{menuController.searchRender}">
+                                    <p:inputText id="txtSearch"  style="width: 100%;margin-top: 15px" styleClass="selectMenu" value="#{searchController.keyword}">
+                                        <p:ajax event="keyup" />
+                                    </p:inputText>
+                                    <p:watermark for="txtSearch" value="Search..." />
+                                </h:form>
+                            </li>
+                            <li class="dropdown notifications-menu" >
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                                <!--                                <ul class="dropdown-menu">
+                                                                    <li class="header"></li>
+                                                                    <h:form>
+                                                                        <h:panelGrid columns="2" style="width: 100%">
+                                                                            <p:inputText id="txtSearch" style="width: 100%;border-radius: 0px!important" styleClass="selectMenu" value="#{searchController.keyword}">
+                                                                                <p:ajax event="keyup" />
+                                                                            </p:inputText>
+                                                                            <p:watermark for="txtSearch" value="Search..." />
+                                                         
+                                                                        </h:panelGrid>
+                                                                    </h:form>
+                                                                    <li class="footer" style="border: 2px solid gray"><a href="#">View Result</a></li>
+                                                                </ul>-->
+                            </li>
+                        </ul></div>
+
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
+
                             <!-- Messages: style can be found in dropdown.less-->
                             <li class="dropdown messages-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -408,76 +452,6 @@
                                     <li class="footer"><a href="#">View all</a></li>
                                 </ul>
                             </li>
-                            <!-- Tasks: style can be found in dropdown.less -->
-                            <!--                            <li class="dropdown tasks-menu">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                                <i class="fa fa-flag-o"></i>
-                                                                <span class="label label-danger">9</span>
-                                                            </a>
-                                                            <ul class="dropdown-menu">
-                                                                <li class="header">You have 9 tasks</li>
-                                                                <li>
-                                                                     inner menu: contains the actual data 
-                                                                    <ul class="menu">
-                                                                        <li> Task item 
-                                                                            <a href="#">
-                                                                                <h3>
-                                                                                    Design some buttons
-                                                                                    <small class="pull-right">20%</small>
-                                                                                </h3>
-                                                                                <div class="progress xs">
-                                                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                                                        <span class="sr-only">20% Complete</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li> end task item 
-                                                                        <li> Task item 
-                                                                            <a href="#">
-                                                                                <h3>
-                                                                                    Create a nice theme
-                                                                                    <small class="pull-right">40%</small>
-                                                                                </h3>
-                                                                                <div class="progress xs">
-                                                                                    <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                                                        <span class="sr-only">40% Complete</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li> end task item 
-                                                                        <li> Task item 
-                                                                            <a href="#">
-                                                                                <h3>
-                                                                                    Some task I need to do
-                                                                                    <small class="pull-right">60%</small>
-                                                                                </h3>
-                                                                                <div class="progress xs">
-                                                                                    <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                                                        <span class="sr-only">60% Complete</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li> end task item 
-                                                                        <li> Task item 
-                                                                            <a href="#">
-                                                                                <h3>
-                                                                                    Make beautiful transitions
-                                                                                    <small class="pull-right">80%</small>
-                                                                                </h3>
-                                                                                <div class="progress xs">
-                                                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                                                        <span class="sr-only">80% Complete</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li> end task item 
-                                                                    </ul>
-                                                                </li>
-                                                                <li class="footer">
-                                                                    <a href="#">View all tasks</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>-->
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -489,8 +463,7 @@
                                     <li class="user-header">
                                         <h:graphicImage library="images" name="me.jpg" class="img-circle" alt="User Image"/>
                                         <p>
-                                            <!--<p>#{registrationController.loggedInUser.first_name} #{registrationController.loggedInUser.last_name}</p>-->
-                                            Tasneem Barghouthi - Developer
+                                            <p>#{registrationController.loggedInUser.first_name} #{registrationController.loggedInUser.last_name} - Developer</p>                                             
                                             <small>Member since Nov. 2016</small>
                                         </p>
                                     </li>
@@ -503,7 +476,7 @@
                                             <a href="#">Activities</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
+                                            <a href="#">Settings</a>
                                         </div>
                                     </li>
                                     <!-- Menu Footer-->
@@ -516,7 +489,7 @@
                                         </div>
                                         <div class="pull-right">
                                             <h:form>
-                                                <p:commandLink style="color: white" value="Sign out" styleClass="btn btn-default btn-flat" action="#{loginController.logout()}">
+                                                <p:commandLink style="color: white" value="#{messages.logoutText}" styleClass="btn btn-default btn-flat" ajax="false" action="#{registrationController.logout()}">
                                                     <i class="fa fa-sign-out fa-lg"></i>
                                                     &nbsp;
                                                 </p:commandLink>
@@ -544,10 +517,10 @@
                         <div class="user-panel">
                             <div class="pull-left image">
                                 <h:graphicImage library="images" name="me.jpg" class="img-circle" alt="User Image"/>
+                                <!--<h:graphicImage library="dist" name="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>-->
                             </div>
                             <div class="pull-left info">
-                                <!--<p>#{registrationController.loggedInUser.first_name} #{registrationController.loggedInUser.last_name}</p>-->
-                                <p>Tasneem Barghouthi</p>
+                                <p>#{registrationController.loggedInUser.first_name} #{registrationController.loggedInUser.last_name}</p>
                                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                             </div>
                         </div>
@@ -562,41 +535,10 @@
                                                     </div>
                                                 </div>-->
                         <!-- sidebar menu: : style can be found in sidebar.less -->
+                        <p:separator style="width: 90%; margin: auto;"/>
                         <ul class="sidebar-menu" id="sidebar-menu" style="height: 80%;width: 100%">
-                            <li class="header" id="liHeader">MAIN NAVIGATION</li>
                             <h:panelGroup id="menuListGroup" class="sidebar-menu">
-                                <ui:repeat value="#{menuController.menuList}" var="menu">
-                                    <ui:fragment rendered="#{menu.topMenuId==null}">
-                                        <li class="treeview" id="mainTree">
-                                            <ui:fragment rendered="#{menu.menuLink eq null or menu.menuLink ==''}">
-                                                <a href="">
-                                                    <i class="#{menu.icon}" style="color:#{menu.iconColor}"></i>
-                                                    <span>
-                                                        #{menu.menuName}
-                                                    </span>
-                                                    <i class="fa fa-angle-left pull-right"></i>
-                                                </a>
-                                            </ui:fragment>
-                                            <ul class="treeview-menu">
-                                                <ui:repeat value="#{menuController.menuList}" var="subMenu">
-
-                                                    <ui:fragment rendered="#{menu.id == subMenu.topMenuId}">
-
-                                                        <li id="li#{subMenu.id}">
-                                                            <p:commandLink action="#{menuController.setPage(subMenu.menuLink,subMenu.menuName)}" update="myPanel,myDashBoard"  onstart="start()" onsuccess="finish()">
-                                                                <i class="fa fa-circle-o"></i>
-                                                                #{subMenu.menuName}
-                                                                <small class="label pull-right bg-aqua">#{countPage.fieldGetValue(subMenu.menuLink)}</small>
-                                                            </p:commandLink>
-                                                        </li>      
-
-                                                    </ui:fragment>
-
-                                                </ui:repeat>
-                                            </ul>
-                                        </li>
-                                    </ui:fragment>
-                                </ui:repeat>
+                                <ui:include src="navigation.xhtml"/>
                             </h:panelGroup>
                         </ul>
                     </section>
@@ -614,44 +556,17 @@
                     </h1>
                     <h:panelGroup id="myDashBoard" class="breadcrumb">
                         <ol class="breadcrumb">
-                            <li><a href="home.xhtml">No Filtering</a></li>
+                            <li><a href="#">No Filtering</a></li>
                         </ol>
                     </h:panelGroup>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="new_post_container post_container">            
-                        <div class="new_post_details post_details">
-                            <p:graphicImage class="post_owner_photo" value="../resources/images/me.jpg" alt="Tasneem Barghouthi"/>
-                        </div>
-                        <div class="new_post_content">
-                            <!--                            <div class="new_post_meta">
-                                                            <span class="post_owner_name pull_left">
-                                                                we read the value of the next output label from database
-                                                                <p:outputLabel value="Tasneem Barghouthi"/>
-                                                            </span>
-                                                            <span class="post_timestamp pull_right">
-                                                                we read the value of the next output label from database
-                                                                <p:outputLabel value="06 Mar 12:02 am"/>
-                                                            </span>
-                                                        </div>-->
-                            <!--we read the post content from database, we check-->
-                            <!--for each of these following elements we add a "rendered" attribute that check if the source of the element is not empty-->
-                            <p:outputLabel class="post_text" value="post content will be placed here" rendered="true"/>
-                            <p:graphicImage class="post_photo" value="../resources/images/me.jpg" alt="POST CONTENT" rendered="false"/>
-                            <!--still need to show the added video and attached file--> 
-                            <div class="new_post_action_buttons">
-                                <h:form>  
-                                    <p:commandButton style="border: none; background: transparent;" icon="fa fa-heart-o"/>
-                                    <p:commandButton style="border: none; background: transparent;" icon="fa fa-comment-o"/>
-                                    <p:commandButton style="border: none; background: transparent;" icon="fa fa-retweet"/>
-                                </h:form>
-                            </div>
-                        </div>
-                    </div>
+
                     <!--                    <ui:insert name="body"/>                   -->
                     <h:panelGroup id="myPanel" layout="block">
+                        <ui:include src="reusable/new-post.xhtml"/>
                         <ui:include src="#{menuController.pageLink}"/>
                         <!--<ui:include src="reusable/post.xhtml"/>-->
                     </h:panelGroup>
@@ -785,5 +700,8 @@
                     });
         
                 </script>-->
+    </h:body>
+    <h:body rendered="#{not registrationController.loggedIn}">
+        <ui:include src="registration/guest-user.xhtml"/>
     </h:body>
 </html>
